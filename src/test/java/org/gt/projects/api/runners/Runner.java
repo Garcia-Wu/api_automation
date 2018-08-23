@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 //        tags = {"@All"},
         features = {"src/main/resources/features"},
-        glue = {"org.gt.projects.api.steps"},
+        glue = {"org.gt.projects.api.steps", "org.gt.projects.api.core.hooks"},
         plugin = {
                 "pretty",
                 "html:target/cucumber",

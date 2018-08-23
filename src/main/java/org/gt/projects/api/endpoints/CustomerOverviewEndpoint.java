@@ -19,7 +19,7 @@ public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResp
 
     @Override
     public String getURL() {
-        return "http://120.26.134.114:8088/mobile/v1/customer/"+customerId+"/overview?currency="+currency;
+        return "/customer/"+customerId+"/overview?currency="+currency;
     }
 
     @Override

@@ -1,11 +1,11 @@
 package org.gt.projects.api.core.hooks;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import io.restassured.RestAssured;
 import org.gt.projects.api.core.Stub;
 import org.gt.projects.api.core.spring.properties.models.Application;
-import org.junit.After;
-import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
@@ -20,8 +20,8 @@ public class ScenarioHook {
     @Autowired
     private Environment env;
 
-    @Autowired
-    private List<Stub> stubs;
+//    @Autowired
+//    private List<Stub> stubs;
 
     private WireMockServer wireMockServer;
     private boolean isMock;
@@ -33,7 +33,7 @@ public class ScenarioHook {
         if(isMock){
             wireMockServer = new WireMockServer(8080);
             wireMockServer.start();
-            stubs.forEach(Stub::createStub);
+//            stubs.forEach(Stub::createStub);
         }
     }
 

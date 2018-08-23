@@ -16,7 +16,7 @@ public class AccountOverviewEndpoint implements PostRequest<AccountOverviewReque
 
     @Override
     public String getURL() {
-        return "http://120.26.134.114:8088/mobile/v1/accounts/overview";
+        return "/accounts/overview";
     }
 
     @Override

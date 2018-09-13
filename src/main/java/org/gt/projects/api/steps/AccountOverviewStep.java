@@ -3,6 +3,7 @@ package org.gt.projects.api.steps;
 import cucumber.api.PendingException;
 import cucumber.api.java8.En;
 import org.gt.projects.api.core.BaseSteps;
+import org.gt.projects.api.core.RequestHeaders;
 import org.gt.projects.api.data.request.AccountOverviewRequestBody;
 import org.gt.projects.api.data.response.AccountOverviewResponse;
 import org.gt.projects.api.endpoints.AccountOverviewEndpoint;
@@ -24,6 +25,8 @@ public class AccountOverviewStep extends BaseSteps implements En {
         });
         When("^Account Overview search record successfully$", () -> {
             accountOverviewResponse = accountOverviewEndpoint.executeApiPostRequest(accountOverviewRequestBody);
+            RequestHeaders.setAmsessionHeader(accountOverviewEndpoint.getResponse(accountOverviewRequestBody).getHeader("AMSESSION"));
+            RequestHeaders.setTokenHeader(accountOverviewEndpoint.getResponse(accountOverviewRequestBody).getHeader("LtpaToken2"));
             System.out.println("return data code: "+accountOverviewResponse.getCode());
         });
     }

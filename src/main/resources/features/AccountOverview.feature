@@ -1,4 +1,4 @@
-@All
+@abc
 Feature: Account overview
 
   Scenario:

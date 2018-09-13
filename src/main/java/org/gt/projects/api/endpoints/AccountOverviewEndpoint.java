@@ -16,7 +16,7 @@ public class AccountOverviewEndpoint implements PostRequest<AccountOverviewReque
 
     @Override
     public String getURL() {
-        return "/accounts/overview";
+        return "/account/overview";
     }
 
     @Override

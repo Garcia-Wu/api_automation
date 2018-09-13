@@ -1,6 +1,7 @@
 package org.gt.projects.api.endpoints;
 
 
+import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import org.gt.projects.api.core.GetRequest;
 import org.gt.projects.api.core.RequestHeaders;
@@ -8,11 +9,15 @@ import org.gt.projects.api.data.response.CustomerOverviewResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResponse> {
 
     @Autowired
     private RequestHeaders requestHeaders;
+    private String amsession;
 
     private String customerId;
     private String currency;
@@ -24,7 +29,10 @@ public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResp
 
     @Override
     public Headers getJsonHeaders() {
-        return requestHeaders.getJsonHeaders();
+        List<Header> headerList = requestHeaders.getJsonHeaders().asList();
+        List<Header> list = new ArrayList<>(headerList);
+        list.add(new Header("amsseion", amsession));
+        return new Headers(headerList);
     }
 
     @Override
@@ -46,5 +54,13 @@ public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResp
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getAmsession() {
+        return amsession;
+    }
+
+    public void setAmsession(String amsession) {
+        this.amsession = amsession;
     }
 }

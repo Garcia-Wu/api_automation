@@ -2,8 +2,9 @@ package org.gt.projects.api.core.spring.properties.models;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 @ConfigurationProperties(prefix = "application")
 public class Application {
 

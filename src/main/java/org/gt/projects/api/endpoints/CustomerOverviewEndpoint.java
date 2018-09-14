@@ -29,10 +29,12 @@ public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResp
 
     @Override
     public Headers getJsonHeaders() {
-        List<Header> headerList = requestHeaders.getJsonHeaders().asList();
-        List<Header> list = new ArrayList<>(headerList);
-        list.add(new Header("amsseion", amsession));
-        return new Headers(headerList);
+//        List<Header> headerList = requestHeaders.getJsonHeaders().asList();
+//        List<Header> list = new ArrayList<>(headerList);
+//        list.add(new Header("amsseion", amsession));
+//        return new Headers(headerList);
+
+        return requestHeaders.getJsonHeaders();
     }
 
     @Override
@@ -56,11 +58,11 @@ public class CustomerOverviewEndpoint implements GetRequest<CustomerOverviewResp
         this.currency = currency;
     }
 
-    public String getAmsession() {
-        return amsession;
-    }
-
-    public void setAmsession(String amsession) {
-        this.amsession = amsession;
-    }
+//    public String getAmsession() {
+//        return amsession;
+//    }
+//
+//    public void setAmsession(String amsession) {
+//        this.amsession = amsession;
+//    }
 }

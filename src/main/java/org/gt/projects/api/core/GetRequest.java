@@ -6,9 +6,6 @@ import io.restassured.config.JsonConfig;
 import io.restassured.http.Headers;
 import io.restassured.path.json.config.JsonPathConfig;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
-
-import java.util.Map;
 
 public interface GetRequest<S> {
 

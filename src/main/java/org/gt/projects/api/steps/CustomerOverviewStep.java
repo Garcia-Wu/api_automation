@@ -19,7 +19,7 @@ public class CustomerOverviewStep extends BaseSteps implements En {
         Given("^That a Customer Overview Search By capturing \"([^\"]*)\" and \"([^\"]*)\"$", (String customerId, String requestCurrency) -> {
             customerOverviewEndpoint.setCustomerId(customerId);
             customerOverviewEndpoint.setCurrency(requestCurrency);
-            customerOverviewEndpoint.setAmsession("sdfsdf");
+            //customerOverviewEndpoint.setAmsession("sdfsdf");
 
         });
         When("^Customer Overview search record successfully$", () -> {

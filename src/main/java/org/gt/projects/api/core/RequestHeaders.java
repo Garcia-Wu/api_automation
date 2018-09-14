@@ -10,23 +10,30 @@ import java.util.List;
 @Component
 public class RequestHeaders {
 
-    private static String amsessionHeader = "1";
-    private static String tokenHeader = "2";
+    private static String amsessionHeader;
+    private static String tokenHeader;
+    //private List<Header> headerList = new ArrayList<>();
 
     private Header contentHeader = new Header("Content-Type","application/json");
     private Header acceptHeader = new Header("Accept", "application/json");
 
     public Headers getJsonHeaders(){
-        List<Header> headerList = new ArrayList<>();
-        headerList.add(contentHeader);
-        headerList.add(acceptHeader);
+//        headerList.add(contentHeader);
+//        headerList.add(acceptHeader);
+        List<Header> headerList = new ArrayList<>(new Headers(contentHeader, acceptHeader).asList());
+        //headerList.add(new Header("amsession",amsessionHeader));
+
         if(amsessionHeader != null && tokenHeader != null){
             headerList.add(new Header("AMSESSION", amsessionHeader));
             headerList.add(new Header("LtpaToken2", tokenHeader));
+
         }
-        Headers headers = new Headers(headerList);
-        return headers;
+        return new Headers(headerList);
     }
+
+//    public void addHeader(String name, String value){
+//        headerList.add(new Header(name, value));
+//    }
 
     public static String getAmsessionHeader() {
         return amsessionHeader;

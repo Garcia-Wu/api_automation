@@ -1,2 +1,16 @@
 application:
-            url: http://120.26.134.114:8088/mobile/v1
+  url: http://47.52.150.234:8080
+
+  # App Config
+  appid: 2017002
+  appkey: 62345451mj56f454
+#  channelId: Tnaot
+#  clientName: 3.0.1
+
+
+  # Global request header
+  app_version: 3.0.1
+  device_type:
+  device_model:
+  device_id:
+  lan: zh-Hans

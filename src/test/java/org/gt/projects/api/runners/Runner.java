@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-//        tags = {"@All"},
+        tags = {"@UserProfile"},
         features = {"src/main/resources/features"},
         glue = {"org.gt.projects.api.steps", "org.gt.projects.api.core.hooks"},
         plugin = {

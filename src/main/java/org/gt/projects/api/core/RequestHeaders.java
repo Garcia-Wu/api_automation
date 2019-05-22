@@ -2,6 +2,10 @@ package org.gt.projects.api.core;
 
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
+import org.gt.projects.api.core.spring.properties.models.Application;
+import org.gt.projects.api.data.response.OpenAppResponse;
+import org.gt.projects.api.endpoints.OpenAppEndpoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,44 +14,57 @@ import java.util.List;
 @Component
 public class RequestHeaders {
 
-    private static String amsessionHeader;
-    private static String tokenHeader;
-    //private List<Header> headerList = new ArrayList<>();
+    private String uuidHeader;
+    private String tokenHeader;
 
-    private Header contentHeader = new Header("Content-Type","application/json");
-    private Header acceptHeader = new Header("Accept", "application/json");
+    @Autowired
+    private OpenAppEndpoint openAppEndpoint;
+    @Autowired
+    private Application application;
 
-    public Headers getJsonHeaders(){
-//        headerList.add(contentHeader);
-//        headerList.add(acceptHeader);
-        List<Header> headerList = new ArrayList<>(new Headers(contentHeader, acceptHeader).asList());
-        //headerList.add(new Header("amsession",amsessionHeader));
+//    private Header contentHeader = new Header("Content-Type","application/json");
 
-        if(amsessionHeader != null && tokenHeader != null){
-            headerList.add(new Header("AMSESSION", amsessionHeader));
-            headerList.add(new Header("LtpaToken2", tokenHeader));
+    public Headers getJsonHeaders() {
+        List<Header> headerList = new ArrayList<>();
 
-        }
+        headerList.add(new Header("uuid", getUuidHeader()));
+        headerList.add(new Header("token", getTokenHeader()));
+
+        headerList.add(new Header("app_version", application.getApp_version()));
+        headerList.add(new Header("device_type", application.getDevice_type()));
+        headerList.add(new Header("device_model", application.getDevice_model()));
+        headerList.add(new Header("device_id", application.getDevice_id()));
+        headerList.add(new Header("lan", application.getLan()));
+
         return new Headers(headerList);
     }
 
-//    public void addHeader(String name, String value){
-//        headerList.add(new Header(name, value));
-//    }
-
-    public static String getAmsessionHeader() {
-        return amsessionHeader;
+    public String getUuidHeader() {
+        if(uuidHeader == null){
+            getUuidAndToken();
+        }
+        return uuidHeader;
     }
 
-    public static void setAmsessionHeader(String amsessionHeader) {
-        RequestHeaders.amsessionHeader = amsessionHeader;
+    public void setUuidHeader(String uuidHeader) {
+        this.uuidHeader = uuidHeader;
     }
 
-    public static String getTokenHeader() {
+    public String getTokenHeader() {
+        if(tokenHeader == null){
+            getUuidAndToken();
+        }
         return tokenHeader;
     }
 
-    public static void setTokenHeader(String tokenHeader) {
-        RequestHeaders.tokenHeader = tokenHeader;
+    public void setTokenHeader(String tokenHeader) {
+        this.tokenHeader = tokenHeader;
+    }
+
+    // 通过open_app获取uuid跟token
+    private void getUuidAndToken(){
+        OpenAppResponse openAppResponse = openAppEndpoint.executeApiGetRequest();
+        setUuidHeader(openAppResponse.getResult().getUuid());
+        setTokenHeader(openAppResponse.getResult().getToken());
     }
 }

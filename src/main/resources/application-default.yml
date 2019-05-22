@@ -1,16 +1,17 @@
 application:
   url: http://47.52.150.234:8080
 
-  # App Config
+  # Open_App Config
   appid: 2017002
   appkey: 62345451mj56f454
 #  channelId: Tnaot
 #  clientName: 3.0.1
+  jg_push_environment: 2
 
 
   # Global request header
   app_version: 3.0.1
-  device_type:
-  device_model:
-  device_id:
+  device_type: 1
+  device_model: OS105
+  device_id: aimei867955030041138
   lan: zh-Hans

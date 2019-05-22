@@ -3,8 +3,8 @@ Feature: Member UserProfile
 
   Scenario: Login App
     Given I login as member
-      | areaCode | 86             |
-      | mobile    | 15218690991    |
-      | password  | 123456         |
+      | area_code | 86                               |
+      | user_name | 15218690991                      |
+      | password  | de517dc51425c52829012651a18a27cb |
     When Login App successfully
-    Then Check the state is "1"
+    Then Check that the area code and mobile are correct

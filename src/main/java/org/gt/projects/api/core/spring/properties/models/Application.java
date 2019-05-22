@@ -14,9 +14,10 @@ public class Application {
     private String appkey;
     private String channelId;
     private String clientName;
+    private Integer jg_push_environment;
 
     private String app_version;
-    private String device_type;
+    private Integer device_type;
     private String device_model;
     private String device_id;
     private String lan;
@@ -61,6 +62,14 @@ public class Application {
         this.clientName = clientName;
     }
 
+    public Integer getJg_push_environment() {
+        return jg_push_environment;
+    }
+
+    public void setJg_push_environment(Integer jg_push_environment) {
+        this.jg_push_environment = jg_push_environment;
+    }
+
     public String getApp_version() {
         return app_version;
     }
@@ -69,11 +78,11 @@ public class Application {
         this.app_version = app_version;
     }
 
-    public String getDevice_type() {
+    public Integer getDevice_type() {
         return device_type;
     }
 
-    public void setDevice_type(String device_type) {
+    public void setDevice_type(Integer device_type) {
         this.device_type = device_type;
     }
 

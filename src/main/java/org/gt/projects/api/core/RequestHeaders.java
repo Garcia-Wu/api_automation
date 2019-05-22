@@ -16,6 +16,7 @@ public class RequestHeaders {
 
     private String uuidHeader;
     private String tokenHeader;
+    List<Header> headerList = new ArrayList<>();
 
     @Autowired
     private OpenAppEndpoint openAppEndpoint;
@@ -25,17 +26,17 @@ public class RequestHeaders {
 //    private Header contentHeader = new Header("Content-Type","application/json");
 
     public Headers getJsonHeaders() {
-        List<Header> headerList = new ArrayList<>();
-
         headerList.add(new Header("uuid", getUuidHeader()));
         headerList.add(new Header("token", getTokenHeader()));
+        return getGlobalHeader();
+    }
 
+    public Headers getGlobalHeader() {
         headerList.add(new Header("app_version", application.getApp_version()));
-        headerList.add(new Header("device_type", application.getDevice_type()));
+        headerList.add(new Header("device_type", application.getDevice_type().toString()));
         headerList.add(new Header("device_model", application.getDevice_model()));
         headerList.add(new Header("device_id", application.getDevice_id()));
         headerList.add(new Header("lan", application.getLan()));
-
         return new Headers(headerList);
     }
 

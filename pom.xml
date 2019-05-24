@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.gt.projects</groupId>
+    <groupId>com.mongcent.tnaot</groupId>
     <artifactId>Api_Test</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -85,6 +85,18 @@
             <groupId>net.javacrumbs.hamcrest-logger</groupId>
             <artifactId>hamcrest-logger</artifactId>
             <version>${hamcrest.logger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+        <!--cucumber report-->
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>3.14.0</version>
         </dependency>
     </dependencies>
 

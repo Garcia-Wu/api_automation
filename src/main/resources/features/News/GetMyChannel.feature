@@ -1,6 +1,6 @@
 @All @News @GetMyChannel
 Feature: Get My Channel
-#获取我的资讯菜单列表
+#获取资讯我的频道列表
 
   Scenario: Get My Channel search
     Given that a Get My Channel search request
